@@ -1,11 +1,9 @@
 module uart_tx_tb;
-
    parameter int  baud_c = 9600;
    time		  period = 1s/baud_c;
 
    logic clk  = 0;
    logic data;
-
    logic [7:0] rd_data;
 
 
@@ -14,6 +12,7 @@ module uart_tx_tb;
 	 #(period/2) clk = ~clk;
       end
    end
+
 
    initial begin
       repeat(10) @(posedge clk);
@@ -24,6 +23,7 @@ module uart_tx_tb;
       dut_tx.write(8'h3c);
       dut_tx.write(8'h3c);
    end
+
 
    initial begin
       dut_rx.read(rd_data);
@@ -54,7 +54,8 @@ module uart_tx_tb;
       $finish;
    end
 
-   // DUT
+
+   // DUTs
    uart_tx_bfm dut_tx(clk, data);
    uart_rx_bfm #(.baud(baud_c)) dut_rx(data);
 endmodule // uart_tx_tb
