@@ -1,4 +1,4 @@
-module uart_tx_tb;
+module uart_tb;
    parameter int  baud_c = 9600;
    time		  period = 1s/baud_c;
 
@@ -58,4 +58,4 @@ module uart_tx_tb;
    // DUTs
    uart_tx_bfm dut_tx(clk, data);
    uart_rx_bfm #(.baud(baud_c)) dut_rx(data);
-endmodule // uart_tx_tb
+endmodule // uart_tb
