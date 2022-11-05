@@ -37,8 +37,22 @@ module uart_tx_tb;
 
       dut_rx.read(rd_data);
       assert(rd_data == 8'h3c);
+
+      $display("============================");
+      $display("======= TEST PASSED! =======");
+      $display("============================");
+      $finish;
    end
 
+
+   initial begin
+      #(100*period)
+
+      $display("============================");
+      $display("======= TEST FAILED! =======");
+      $display("============================");
+      $finish;
+   end
 
    // DUT
    uart_tx_bfm dut_tx(clk, data);
